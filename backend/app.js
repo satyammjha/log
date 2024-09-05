@@ -5,9 +5,8 @@ const ddosLoginModel = require('./models/LoginData');
 const Details = require('./models/Details');
 require('dotenv').config();
 
-const PORT = process.env.PORT;
-const MONGO_URI = process.env.MONGO_URI;
-
+const PORT = 3001;
+const MONGO_URI = "mongodb+srv://satyammjha0:zjQMYG2gqOszfDYz@cluster0.bqjw3mz.mongodb.net/ddos?retryWrites=true&w=majority&appName=Cluster0"
 
 const app = express();
 app.use(express.json());
@@ -17,8 +16,8 @@ mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('Error connecting to MongoDB:', err));
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
 
 app.post('/register', (req, res) => {
     const { email, password } = req.body;
